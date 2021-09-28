@@ -1,7 +1,9 @@
 #include "funshield.h"
 
-constexpr size_t interval_to_boost = 800;
-constexpr size_t boost_interval = 400;
+constexpr size_t interval_to_boost = 400;
+constexpr size_t boost_interval = 200;
+constexpr size_t max_throws = 9;
+constexpr size_t min_throws = 1;
 int throws = 1;
 int dices = 4;
 int random_number = 0;
@@ -134,10 +136,10 @@ struct Arduino{
   }
 
   void increase_throws(){
-    if (throws < 9){
+    if (throws < max_throws){
       throws++;
     } else {
-      throws = 1;
+      throws = min_throws;
     }
   }
 
